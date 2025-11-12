@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 
-body {
-}
-
 .container {
   max-width: 1280px;
   padding: 0 20px;
@@ -28,4 +25,14 @@ body {
     bottom: -20px;
     border-radius: 20px;
   }
+}
+
+.row-center {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.2s linear;
 }

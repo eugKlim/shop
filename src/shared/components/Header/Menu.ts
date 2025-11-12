@@ -1,4 +1,4 @@
-import { ROUTES } from '../config/routes';
+import { ROUTES } from '../../config/routes';
 
 export const menuDb = [
   {
@@ -15,11 +15,12 @@ export const authDb = [
   {
     name: 'Login',
     link: ROUTES.LOGIN,
-    linkStyle: 'hover:text-gray-400',
+    linkStyle: 'hover:text-gray-300',
   },
   {
     name: 'Registration',
     link: ROUTES.REGISTER,
-    linkStyle: 'bg-amber-700 hover:bg-amber-800',
+    linkStyle:
+      'bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-700',
   },
 ];

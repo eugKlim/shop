@@ -3,7 +3,7 @@ import { menuDb, authDb } from './Menu';
 
 const Header = () => {
   return (
-    <header className=" bg-cyan-800 text-white py-3">
+    <header className=" bg-cyan-800 text-white py-3 shadow-[0px_2px_5px_0px_rgba(0,0,0,0.68)] rounded-b-xl bg-linear-to-r from-violet-600 to-indigo-600">
       <div className="container center justify-between">
         <div>
           <a
