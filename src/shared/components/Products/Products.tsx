@@ -1,14 +1,24 @@
-import { useGetProductsQuery } from '../../../services/productsApi';
-
 import { FaCartPlus } from 'react-icons/fa';
 import { CgDetailsMore } from 'react-icons/cg';
 import { BiSolidMessageError } from 'react-icons/bi';
 import { AiOutlineProduct } from 'react-icons/ai';
-
+import type { Dispatch, SetStateAction } from 'react';
+import type { IFilter, IProductsResponse } from '../../types/Products';
 const messageStyle = 'row-center justify-center font-bold uppercase';
-const Products = () => {
-  const { data, isLoading, isError } = useGetProductsQuery(undefined);
 
+interface Props {
+  data: IProductsResponse | undefined;
+  setFilters: Dispatch<SetStateAction<IFilter>>;
+  isLoading: boolean;
+  isError: boolean;
+}
+
+const Products: React.FC<Props> = ({
+  data,
+  isLoading,
+  isError,
+  setFilters,
+}) => {
   if (isLoading) return <p>Loading...</p>;
   if (isError)
     return (
@@ -28,6 +38,9 @@ const Products = () => {
 
   return (
     <section>
+      <div className="mb-6">
+        {data?.total !== 0 && <h5>Total goods: {data?.total}</h5>}
+      </div>
       <div className="grid gap-10 grid-cols-[repeat(auto-fit,minmax(224px,224px))]">
         {products?.map(({ _id, title, images, price, brand }) => (
           <div
@@ -48,7 +61,19 @@ const Products = () => {
               <h3 className="font-semibold leading-5 line-clamp-2">{title}</h3>
               <div className="flex justify-between text-sm">
                 <p>
-                  <span className="font-semibold">Brand:</span> {brand}
+                  <span className="font-semibold">Brand:</span>{' '}
+                  <button
+                    className="text-blue-700"
+                    onClick={() =>
+                      setFilters((prev: IFilter) => ({
+                        ...prev,
+                        brand: brand,
+                        skip: 0,
+                      }))
+                    }
+                  >
+                    {brand}
+                  </button>
                 </p>
                 <span className="text-green-600 font-semibold">{price}$</span>
               </div>

@@ -36,3 +36,8 @@ button {
   cursor: pointer;
   transition: 0.2s linear;
 }
+input {
+  border: 1px solid #646464;
+  border-radius: 10px;
+  padding: 4px 6px;
+}
