@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Products from '../shared/components/Products/Products';
-import Filter from '../shared/components/Filter/Filter';
 import { useSearchParams } from 'react-router-dom';
-import Pagination from '../shared/components/Pagination/Pagination';
+import Products from '../components/Products/Products';
+import Filter from '../components/Filter/Filter';
+import Pagination from '../components/Pagination/Pagination';
 import { useGetProductsQuery } from '../services/productsApi';
 
 const LIMIT = 9;

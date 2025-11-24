@@ -5,13 +5,9 @@ export const menuDb = [
     name: 'Home',
     link: ROUTES.HOME,
   },
-  {
-    name: 'Cart',
-    link: ROUTES.CART,
-  },
 ];
 
-export const authDb = [
+export const noAuthDb = [
   {
     name: 'Login',
     link: ROUTES.LOGIN,
@@ -22,5 +18,13 @@ export const authDb = [
     link: ROUTES.REGISTER,
     linkStyle:
       'bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-700',
+  },
+];
+
+export const authDb = [
+  {
+    name: 'Cart',
+    link: ROUTES.CART,
+    linkStyle: '',
   },
 ];

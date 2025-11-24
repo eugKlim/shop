@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_API_URL } from '../shared/config/baseUrl';
-import type { IProduct } from '../shared/types/Products';
+import { BASE_API_URL } from '../config/baseUrl';
+import type { IProduct } from '../types/Products';
 
 export interface IProductsQuery {
   q?: string;

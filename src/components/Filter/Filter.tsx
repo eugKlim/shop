@@ -7,7 +7,7 @@ import {
 } from 'react';
 import type { IFilter } from '../../types/Products';
 import useDebounce from '../../hooks/useDebounce';
-import { useGetFacetsQuery } from '../../../services/productsApi';
+import { useGetFacetsQuery } from '../../services/productsApi';
 import Search from './Search';
 import Price from './Price';
 import Brands from './Brands';
