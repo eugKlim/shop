@@ -102,6 +102,7 @@ export const authApi = createApi({
         method: 'POST',
       }),
     }),
+
     getCurrentUser: builder.query<{ user: AuthResponse['user'] }, void>({
       query: () => '/auth/me',
       providesTags: ['Auth'],
@@ -114,6 +115,34 @@ export const authApi = createApi({
         }
       },
     }),
+
+    requestPasswordReset: builder.mutation<
+      { message: string },
+      { email: string }
+    >({
+      query: (data) => ({
+        url: '/password-reset/request',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    resetPassword: builder.mutation<
+      { message: string },
+      { token: string; password: string }
+    >({
+      query: (data) => ({
+        url: '/password-reset/reset',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
+    verifyResetToken: builder.query<{ message: string; email: string }, string>(
+      {
+        query: (token) => `/password-reset/verify/${token}`,
+      }
+    ),
   }),
 });
 
@@ -124,4 +153,7 @@ export const {
   useRefreshTokenMutation,
   useGetCurrentUserQuery,
   useLazyGetCurrentUserQuery,
+  useRequestPasswordResetMutation,
+  useResetPasswordMutation,
+  useVerifyResetTokenQuery,
 } = authApi;

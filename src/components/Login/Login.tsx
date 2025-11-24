@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useLoginMutation } from '../../services/authApi';
 import { loginSchema, type LoginFormData } from '../../services/auth.schema';
 import { ROUTES } from '../../config/routes';
@@ -55,13 +55,22 @@ const Login = () => {
           disabled={isLoading}
         />
 
+        <div className="text-right">
+          <Link
+            to={ROUTES.FORGOT_PASSWORD}
+            className="text-sm text-cyan-600 hover:text-cyan-700 font-medium transition-colors"
+          >
+            Forgot your password?
+          </Link>
+        </div>
+
         <ServerError
           error={error}
           defaultMessage="There was an error logging in."
         />
 
         <SubmitButton isLoading={isLoading} loadingText="Entrance...">
-          Войти
+          Login
         </SubmitButton>
       </form>
 
