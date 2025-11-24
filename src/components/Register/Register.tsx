@@ -13,6 +13,7 @@ import AuthFormContainer from '../UI/AuthFormContainer';
 import ServerError from '../UI/ServerError';
 import SubmitButton from '../UI/SubmitButton';
 import AuthFormLink from '../UI/AuthFormLink';
+import OAuthComponent from '../oAuth/oAuthComponent';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -75,6 +76,8 @@ const Register = () => {
           Register
         </SubmitButton>
       </form>
+
+      <OAuthComponent />
 
       <AuthFormLink
         text="Already have an account?"
