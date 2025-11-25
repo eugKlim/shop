@@ -4,14 +4,13 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useLoginMutation } from '../../services/authApi';
 import { loginSchema, type LoginFormData } from '../../services/auth.schema';
 import { ROUTES } from '../../config/routes';
-import OAuthButton from '../oAuth/OAuthButton';
+import OAuthComponent from '../oAuth/OAuthComponent';
 
 import Input from '../UI/Input';
 import AuthFormContainer from '../UI/AuthFormContainer';
 import ServerError from '../UI/ServerError';
 import SubmitButton from '../UI/SubmitButton';
 import AuthFormLink from '../UI/AuthFormLink';
-import OAuthComponent from '../oAuth/oAuthComponent';
 
 const Login = () => {
   const navigate = useNavigate();

@@ -21,6 +21,7 @@ const Price: React.FC<Props> = ({ price, setPrice }) => {
           min={0}
           id="minPrice"
           value={price.min}
+          placeholder="0"
           onChange={(e) =>
             setPrice((prev) => ({ ...prev, skip: 0, min: e.target.value }))
           }
@@ -34,6 +35,7 @@ const Price: React.FC<Props> = ({ price, setPrice }) => {
           min={0}
           id="maxPrice"
           value={price.max}
+          placeholder="0"
           onChange={(e) =>
             setPrice((prev) => ({ ...prev, skip: 0, max: e.target.value }))
           }

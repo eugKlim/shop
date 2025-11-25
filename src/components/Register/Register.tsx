@@ -7,13 +7,13 @@ import {
   type RegisterFormData,
 } from '../../services/auth.schema';
 import { ROUTES } from '../../config/routes';
+import OAuthComponent from '../oAuth/OAuthComponent';
 
 import Input from '../UI/Input';
 import AuthFormContainer from '../UI/AuthFormContainer';
 import ServerError from '../UI/ServerError';
 import SubmitButton from '../UI/SubmitButton';
 import AuthFormLink from '../UI/AuthFormLink';
-import OAuthComponent from '../oAuth/oAuthComponent';
 
 const Register = () => {
   const navigate = useNavigate();

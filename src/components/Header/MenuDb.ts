@@ -1,13 +1,13 @@
 import { ROUTES } from '../../config/routes';
 
-export const menuDb = [
+export const publicMenuDb = [
   {
     name: 'Home',
     link: ROUTES.HOME,
   },
 ];
 
-export const noAuthDb = [
+export const beforeAuthDb = [
   {
     name: 'Login',
     link: ROUTES.LOGIN,
@@ -21,10 +21,10 @@ export const noAuthDb = [
   },
 ];
 
-export const authDb = [
-  {
-    name: 'Cart',
-    link: ROUTES.CART,
-    linkStyle: '',
-  },
-];
+// export const authDb = [
+// {
+//   name: 'Cart',
+//   link: ROUTES.CART,
+//   linkStyle: '',
+// },
+// ];
