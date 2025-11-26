@@ -40,6 +40,11 @@ export const productsApi = createApi({
       providesTags: ['Products'],
     }),
 
+    getProduct: builder.query<IProduct, string>({
+      query: (id) => `/products/${id}`,
+      providesTags: (res, err, id) => [{ type: 'Products', id }],
+    }),
+
     getFacets: builder.query({
       query: (params = {}) => {
         if (!params) {
@@ -60,4 +65,5 @@ export const productsApi = createApi({
   }),
 });
 
-export const { useGetProductsQuery, useGetFacetsQuery } = productsApi;
+export const { useGetProductsQuery, useGetProductQuery, useGetFacetsQuery } =
+  productsApi;

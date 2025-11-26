@@ -1,8 +1,7 @@
-import { ROUTES } from '../../../config/routes';
 import { Link } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
-import { CgDetailsMore } from 'react-icons/cg';
 import { RiShoppingBasketFill } from 'react-icons/ri';
+import { ROUTES } from '../../../config/routes';
 
 interface Props {
   isInCart: (id: string) => boolean;
@@ -21,19 +20,19 @@ interface Props {
 }
 
 const Buttons: React.FC<Props> = ({
-  isInCart,
   handleAddToCart,
   id,
   title,
   images,
   price,
   brand,
+  isInCart,
 }) => {
   return (
-    <div className="text-white grid grid-cols-2 items-start p-1 space-x-1 text-sm font-semibold">
-      {isInCart(id) ? (
+    <div className="mt-6 row-center space-x-3 text-white">
+      {isInCart(String(id)) ? (
         <Link
-          className="py-1 px-2 bg-linear-to-r from-emerald-800  to-green-900 rounded-2xl shadow-sm shadow-green-800  hover:bg-linear-to-l"
+          className="py-1 px-2 bg-linear-to-r from-emerald-800  to-green-900 rounded-2xl shadow-sm shadow-green-800 block w-20  hover:bg-linear-to-l"
           to={ROUTES.CART}
         >
           <RiShoppingBasketFill size={20} className="mx-auto" />
@@ -41,18 +40,18 @@ const Buttons: React.FC<Props> = ({
       ) : (
         <button
           className="py-1 px-2 bg-linear-to-r from-emerald-700  to-green-600 rounded-2xl shadow-sm shadow-green-700 row-center uppercase hover:bg-linear-to-l"
-          onClick={() => handleAddToCart(id, title, images, price, brand)}
+          onClick={() =>
+            handleAddToCart(String(id), title, images, price, brand)
+          }
         >
           <FaCartPlus className="mr-2" /> To cart
         </button>
       )}
-
       <Link
-        className="py-1 px-2 bg-pink-800 rounded-2xl row-center uppercase  shadow-sm shadow-pink-500 hover:bg-pink-700"
-        to={ROUTES.DETAIL.replace(':id', id)}
+        to={ROUTES.HOME}
+        className="py-1 px-4 bg-linear-to-r from-gray-700  to-gray-600 rounded-2xl block  row-center uppercase hover:bg-linear-to-l"
       >
-        <CgDetailsMore className="mr-2" />
-        Details
+        Home
       </Link>
     </div>
   );

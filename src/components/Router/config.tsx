@@ -6,6 +6,7 @@ import { ROUTES } from '../../config/routes';
 import ForgotPasswordPage from '../../pages/ForgotPasswordPage';
 import ResetPasswordPage from '../../pages/ResetPasswordPage';
 import CartPage from '../../pages/CartPage';
+import ProductPage from '../../pages/ProductPage';
 
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
@@ -25,6 +26,7 @@ export interface AppRoute {
 
 export const publicRoutes: AppRoute[] = [
   { path: ROUTES.HOME, element: <HomePage /> },
+  { path: ROUTES.DETAIL, element: <ProductPage /> },
   { path: ROUTES.LOGIN, element: <LoginPage />, onlyGuests: true },
   { path: ROUTES.REGISTER, element: <RegisterPage />, onlyGuests: true },
   {
