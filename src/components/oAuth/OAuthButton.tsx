@@ -15,7 +15,7 @@ const OAuthButton = ({ provider, children, className }: OAuthButtonProps) => {
     <button
       type="button"
       onClick={handleOAuth}
-      className={`w-full flex items-center justify-center gap-3 py-3 px-4 border border-gray-300 rounded-lg font-semibold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-all ${
+      className={`w-full flex items-center justify-center gap-3 py-3 px-4 border border-gray-300 rounded-lg font-semibold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-all dark:hover:bg-gray-700 ${
         className || ''
       }`}
     >

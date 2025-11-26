@@ -53,7 +53,7 @@ const Products: React.FC<Props> = ({
         {products?.map(({ _id, title, images, price, brand }) => (
           <div
             key={_id}
-            className="w-56 border border-gray-300 rounded-2xl space-y-3 mb-10 flex flex-col pb-1 shadow-[3px_3px_5px_0px_rgba(0,0,0,0.36)]"
+            className="w-56 border border-gray-600 rounded-2xl space-y-3 mb-10 flex flex-col pb-1 shadow-[3px_3px_5px_0px_rgba(0,0,0,0.36)]"
           >
             <div className="p-1 bg-gray-200  rounded-2xl ">
               <img

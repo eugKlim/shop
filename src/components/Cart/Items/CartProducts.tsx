@@ -8,6 +8,8 @@ interface Props {
   removeFromCart: (id: string) => PayloadAction<string>;
   items: CartItem[];
 }
+const buttonStyle =
+  'w-8 h-8 flex items-center justify-center bg-gray-200 rounded hover:bg-gray-300 transition dark:text-black';
 
 const CartProducts = ({
   decrementQuantity,
@@ -21,7 +23,7 @@ const CartProducts = ({
       {items.map((item) => (
         <div
           key={item.id}
-          className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md"
+          className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:text-white"
         >
           {item.image && (
             <img
@@ -33,13 +35,13 @@ const CartProducts = ({
 
           <div className="flex-1">
             <h3 className="text-lg font-semibold">{item.name}</h3>
-            <p className="text-gray-600">{item.price} $</p>
+            <p className="text-gray-600 dark:text-gray-300">{item.price} $</p>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={() => dispatch(decrementQuantity(String(item.id)))}
-              className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded hover:bg-gray-300 transition"
+              className={buttonStyle}
             >
               -
             </button>
@@ -48,7 +50,7 @@ const CartProducts = ({
             </span>
             <button
               onClick={() => dispatch(incrementQuantity(String(item.id)))}
-              className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded hover:bg-gray-300 transition"
+              className={buttonStyle}
             >
               +
             </button>

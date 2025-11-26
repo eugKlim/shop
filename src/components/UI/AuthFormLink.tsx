@@ -9,7 +9,7 @@ interface AuthFormLinkProps {
 const AuthFormLink = ({ text, linkText, to }: AuthFormLinkProps) => {
   return (
     <div className="mt-6 text-center">
-      <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600 dark:text-gray-200">
         {text}{' '}
         <Link
           to={to}

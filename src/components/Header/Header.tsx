@@ -1,17 +1,20 @@
-import { FaShopify } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { IoExitOutline } from 'react-icons/io5';
 import { publicMenuDb, beforeAuthDb } from './MenuDb';
 import { ROUTES } from '../../config/routes';
 import { useAppSelector } from '../../hooks/redux';
 import { useLogoutMutation } from '../../services/authApi';
-import { IoExitOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import NavigationItem from './items/NavigationItem';
 import BeforeAuthMenu from './items/BeforeAuthMenu';
+import ThemeBtn from './items/ThemeBtn';
+import { useTheme } from '../../Providers/ThemeProvider';
+import Logo from './items/Logo';
 // import AuthMenu from './items/AuthMenu';
 
 const Header = () => {
   const { isAuthenticated } = useAppSelector((s) => s.auth);
+  const { handleToggleTheme, theme } = useTheme();
   const [logout] = useLogoutMutation();
   const { totalItems } = useCart();
 
@@ -22,22 +25,14 @@ const Header = () => {
       <div className="container center justify-between">
         {/* <Link to="/admin">Admin</Link>
         <Link to="/manager">Manager</Link> */}
-        <div>
-          <a
-            href={ROUTES.HOME}
-            className="center text-2xl font-bold hover:text-amber-200"
-          >
-            <FaShopify color="yellow" />
-            SHOP
-          </a>
-        </div>
+        <Logo />
 
         <div className="center space-x-7">
-          <button>Light | dark</button>
           <nav className="row-center space-x-4">
             <NavigationItem publicMenuDb={publicMenuDb} />
 
             {/* <AuthMenu isAuthMenu={isAuthMenu} isAuthenticated={isAuthenticated} /> */}
+            <ThemeBtn handleToggleTheme={handleToggleTheme} theme={theme} />
 
             <BeforeAuthMenu
               beforeAuthDb={beforeAuthDb}

@@ -1,6 +1,6 @@
 const CartResult = ({ total }: { total: number }) => {
   return (
-    <div className="mt-8 p-6 bg-gray-100 rounded-lg">
+    <div className="mt-8 p-6 bg-gray-100 rounded-lg dark:bg-gray-900">
       <div className="flex justify-between items-center text-2xl font-bold">
         <span>Total:</span>
         <span>{total.toFixed(2)} $</span>

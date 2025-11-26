@@ -5,6 +5,7 @@ import App from './App.tsx';
 import { Provider } from 'react-redux';
 import { store } from './store/index.ts';
 import { AuthInitializer } from './Providers/AuthInitializer';
+import { ThemeProvider } from './Providers/ThemeProvider.tsx';
 import './App.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -12,7 +13,9 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Provider store={store}>
         <AuthInitializer>
-          <App />
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
         </AuthInitializer>
       </Provider>
     </BrowserRouter>

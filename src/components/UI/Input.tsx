@@ -22,7 +22,7 @@ const Input = ({
     <div>
       <label
         htmlFor={inputId}
-        className="block text-sm font-medium text-gray-700 mb-2"
+        className="block text-sm font-medium text-gray-700 mb-2 dark:text-white"
       >
         {label}
       </label>
