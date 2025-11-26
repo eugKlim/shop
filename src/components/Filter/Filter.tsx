@@ -13,6 +13,7 @@ import Price from './Price';
 import Brands from './Brands';
 import Device from './Device';
 import ClearFilter from './ClearFilter';
+import FilterSkeleton from './FilterSkeleton';
 
 interface Props {
   filters: IFilter;
@@ -83,11 +84,11 @@ const Filter: React.FC<Props> = ({ filters, setFilters, resetFilters }) => {
     }
   }, [debounceSearch, debounceMinPrice, debounceMaxPrice, setFilters]);
 
-  if (isLoading) return <div>Loading filter</div>;
+  if (isLoading) return <FilterSkeleton />;
   if (isError) return <div>Error loading filter</div>;
 
   return (
-    <section className="w-[230px] p-4 pt-10 bg-gray-200 rounded-3xl shadow-[0px_0px_8px_0px_rgba(0,0,0,0.35)] dark:bg-gray-800 dark:text-white">
+    <section className="w-full laptop:w-[230px] laptop:max-w-[230px] laptop:min-w-[230px] laptop:flex-shrink-0 laptop:flex-none filter-section p-4 pt-4 laptop:pt-10 bg-gray-200 rounded-3xl shadow-[0px_0px_8px_0px_rgba(0,0,0,0.35)] dark:bg-gray-800 dark:text-white">
       <Search localSearch={localSearch} setLocalSearch={setLocalSearch} />
       <Price price={price} setPrice={setPrice} />
       <hr className="text-gray-400" />

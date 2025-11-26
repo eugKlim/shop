@@ -4,7 +4,7 @@ import AppRouter from './components/Router/AppRouter';
 
 const App = () => {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen ">
       <Header />
       <main className="flex-1 py-12">
         <AppRouter />

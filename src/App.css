@@ -1,6 +1,40 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --breakpoint-mobile: 320px;
+  --breakpoint-table: 728px;
+  --breakpoint-laptop: 1000px;
+}
+
+@custom-variant laptop (min-width: 1000px);
+
+@media (max-width: 999px) {
+  .hidden.laptop\:flex {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  .laptop\:hidden {
+    display: none !important;
+  }
+  .laptop\:flex {
+    display: flex !important;
+  }
+  .laptop\:block {
+    display: block !important;
+  }
+  .hidden.laptop\:flex {
+    display: flex !important;
+  }
+  .filter-section {
+    width: 230px !important;
+    max-width: 230px !important;
+    min-width: 230px !important;
+  }
+}
+
 html.dark {
   background: #1d1f20;
   color: #fff;

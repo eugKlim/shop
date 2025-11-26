@@ -15,9 +15,8 @@ const Slider: React.FC<Props> = ({ images }) => {
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
       <div
+        className="mobile:w-[260px] mobile:h-[324px] table:w-[324px] table:h-[324px]"
         style={{
-          width: '400px',
-          height: '400px',
           marginBottom: '20px',
           borderRadius: '10px',
           overflow: 'hidden',
@@ -29,7 +28,7 @@ const Slider: React.FC<Props> = ({ images }) => {
             pagination: false,
             arrows: false,
             cover: true,
-            height: '400px',
+            height: '324px',
           }}
           ref={mainRef}
           onMoved={(splide: any) => setActiveIndex(splide.index)}

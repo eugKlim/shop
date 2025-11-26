@@ -22,7 +22,7 @@ const Pagination: FC<Props> = ({ page, totalPages, onPageChange }) => {
   const pages = getPages(page, totalPages);
 
   return (
-    <div className="flex gap-2 mt-4">
+    <div className="flex justify-center gap-2 mt-4">
       <button disabled={page === 1} onClick={() => onPageChange(page - 1)}>
         Prev
       </button>

@@ -20,11 +20,3 @@ export const beforeAuthDb = [
       'bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-700',
   },
 ];
-
-// export const authDb = [
-// {
-//   name: 'Cart',
-//   link: ROUTES.CART,
-//   linkStyle: '',
-// },
-// ];
