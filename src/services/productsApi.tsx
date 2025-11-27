@@ -42,7 +42,7 @@ export const productsApi = createApi({
 
     getProduct: builder.query<IProduct, string>({
       query: (id) => `/products/${id}`,
-      providesTags: (res, err, id) => [{ type: 'Products', id }],
+      providesTags: (_res, _err, id) => [{ type: 'Products', id }],
     }),
 
     getFacets: builder.query({
