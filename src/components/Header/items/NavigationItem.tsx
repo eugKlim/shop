@@ -1,3 +1,4 @@
+import { useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
 
 interface IPublicMenuItem {
@@ -11,11 +12,11 @@ interface Props {
 }
 
 const NavigationItem = ({ publicMenuDb, isBurger, toggleMenu }: Props) => {
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (isBurger) {
       toggleMenu();
     }
-  };
+  }, [isBurger, toggleMenu]);
 
   return (
     <div className={isBurger ? 'w-full space-y-3' : 'center space-x-3'}>
@@ -37,4 +38,4 @@ const NavigationItem = ({ publicMenuDb, isBurger, toggleMenu }: Props) => {
   );
 };
 
-export default NavigationItem;
+export default memo(NavigationItem);

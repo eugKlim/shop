@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Logo from './items/Logo';
 import BurgerMenu from './items/Burger/BurgerMenu';
 import BurgerBtn from './items/Burger/BurgerBtn';
@@ -17,9 +17,13 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [logout] = useLogoutMutation();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  const handleLogout = useCallback(() => {
+    logout();
+  }, [logout]);
 
   return (
     <header className="bg-cyan-800 text-white py-3 shadow-[0px_2px_5px_0px_rgba(0,0,0,0.68)] rounded-b-xl bg-linear-to-r from-violet-600 to-indigo-600">
@@ -58,7 +62,7 @@ const Header = () => {
             </Link>
 
             <button
-              onClick={() => logout()}
+              onClick={handleLogout}
               className="p-2 row-center rounded-lg border-b-2 border-gray-400 font-medium hover:text-gray-300"
             >
               Logout <IoExitOutline className="ml-2" />

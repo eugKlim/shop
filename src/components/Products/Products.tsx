@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from 'react';
+import { useMemo, useCallback, memo, type Dispatch, type SetStateAction } from 'react';
 import type { IFilter, IProductsResponse } from '../../types/Products';
 import { useCart } from '../../hooks/useCart';
 import BrandItem from './Items/BrandItem';
@@ -22,7 +22,7 @@ const Products: React.FC<Props> = ({
 }) => {
   const { addToCart, isInCart } = useCart();
 
-  const handleAddToCart = (
+  const handleAddToCart = useCallback((
     id: string,
     title: string,
     images: string,
@@ -36,12 +36,14 @@ const Products: React.FC<Props> = ({
       image: images,
       brand: brand,
     });
-  };
+  }, [addToCart]);
+
+  const products = useMemo(() => {
+    return data?.items.length ? data?.items : [];
+  }, [data?.items]);
 
   if (isLoading) return <ProductsSkeleton />;
   if (isError) return <ErrorReceiveProductsMessage />;
-
-  const products = data?.items.length ? data?.items : [];
   if (!products.length) return <NoProductMessage />;
 
   return (
@@ -87,4 +89,4 @@ const Products: React.FC<Props> = ({
   );
 };
 
-export default Products;
+export default memo(Products);

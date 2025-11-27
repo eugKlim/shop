@@ -1,4 +1,6 @@
-const ProductSkeleton = () => {
+import { memo } from 'react';
+
+const ProductSkeleton = memo(() => {
   return (
     <div className="w-56 mx-auto border border-gray-600 rounded-2xl space-y-3 flex flex-col pb-1 shadow-[3px_3px_5px_0px_rgba(0,0,0,0.36)] animate-pulse">
       {/* Imgskeleton */}
@@ -20,9 +22,9 @@ const ProductSkeleton = () => {
       </div>
     </div>
   );
-};
+});
 
-const ProductsSkeleton = () => {
+const ProductsSkeleton = memo(() => {
   return (
     <section>
       <div className="mb-6 text-right">
@@ -36,6 +38,6 @@ const ProductsSkeleton = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ProductsSkeleton;

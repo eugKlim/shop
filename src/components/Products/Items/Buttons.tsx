@@ -1,3 +1,4 @@
+import { memo, useCallback, useMemo } from 'react';
 import { ROUTES } from '../../../config/routes';
 import { Link } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
@@ -29,9 +30,16 @@ const Buttons: React.FC<Props> = ({
   price,
   brand,
 }) => {
+  const handleClick = useCallback(() => {
+    handleAddToCart(id, title, images, price, brand);
+  }, [handleAddToCart, id, title, images, price, brand]);
+
+  const detailLink = useMemo(() => ROUTES.DETAIL.replace(':id', id), [id]);
+  const inCart = useMemo(() => isInCart(id), [isInCart, id]);
+
   return (
     <div className="text-white grid grid-cols-2 items-start p-1 space-x-1 text-sm font-semibold">
-      {isInCart(id) ? (
+      {inCart ? (
         <Link
           className="py-1 px-2 bg-linear-to-r from-emerald-800  to-green-900 rounded-2xl shadow-sm shadow-green-800  hover:bg-linear-to-l"
           to={ROUTES.CART}
@@ -41,7 +49,7 @@ const Buttons: React.FC<Props> = ({
       ) : (
         <button
           className="py-1 px-2 bg-linear-to-r from-emerald-700  to-green-600 rounded-2xl shadow-sm shadow-green-700 row-center uppercase hover:bg-linear-to-l"
-          onClick={() => handleAddToCart(id, title, images, price, brand)}
+          onClick={handleClick}
         >
           <FaCartPlus className="mr-2" /> To cart
         </button>
@@ -49,7 +57,7 @@ const Buttons: React.FC<Props> = ({
 
       <Link
         className="py-1 px-2 bg-pink-800 rounded-2xl row-center uppercase  shadow-sm shadow-pink-500 hover:bg-pink-700"
-        to={ROUTES.DETAIL.replace(':id', id)}
+        to={detailLink}
       >
         <CgDetailsMore className="mr-2" />
         Details
@@ -58,4 +66,4 @@ const Buttons: React.FC<Props> = ({
   );
 };
 
-export default Buttons;
+export default memo(Buttons);

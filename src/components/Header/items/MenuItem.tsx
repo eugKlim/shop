@@ -1,3 +1,4 @@
+import { useCallback, memo } from 'react';
 import { IoExitOutline } from 'react-icons/io5';
 import { publicMenuDb, beforeAuthDb } from '../MenuDb';
 import NavigationItem from '../items/NavigationItem';
@@ -17,12 +18,12 @@ const MenuItem = ({ isBurger = false, toggleMenu }: MenuItemProps) => {
   const { handleToggleTheme, theme } = useTheme();
   const [logout] = useLogoutMutation();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     logout();
     if (isBurger && toggleMenu) {
       toggleMenu();
     }
-  };
+  }, [logout, isBurger, toggleMenu]);
 
   return (
     <nav
@@ -65,4 +66,4 @@ const MenuItem = ({ isBurger = false, toggleMenu }: MenuItemProps) => {
   );
 };
 
-export default MenuItem;
+export default memo(MenuItem);

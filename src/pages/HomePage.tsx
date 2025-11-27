@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Products from '../components/Products/Products';
 import Filter from '../components/Filter/Filter';
@@ -47,16 +47,30 @@ const HomePage = () => {
   }, [filters]);
 
   const { data, isLoading, isError } = useGetProductsQuery(filters);
-  const page = filters.skip / filters.limit + 1;
-  const totalPages = data ? Math.ceil(data.total / filters.limit) : 1;
 
-  const goToPage = (p: number) => {
-    setFilters((prev) => ({ ...prev, skip: prev.limit! * (p - 1) }));
-  };
+  const page = useMemo(
+    () => filters.skip / filters.limit + 1,
+    [filters.skip, filters.limit]
+  );
+  const totalPages = useMemo(
+    () => (data ? Math.ceil(data.total / filters.limit) : 1),
+    [data, filters.limit]
+  );
 
-  const toggleFilter = () => {
-    setIsFilterOpen(!isFilterOpen);
-  };
+  const goToPage = useCallback(
+    (p: number) => {
+      setFilters((prev) => ({ ...prev, skip: prev.limit! * (p - 1) }));
+    },
+    [setFilters]
+  );
+
+  const toggleFilter = useCallback(() => {
+    setIsFilterOpen((prev) => !prev);
+  }, []);
+
+  const resetFilters = useCallback(() => {
+    setFilters(initialFilters);
+  }, [setFilters]);
 
   return (
     <div>
@@ -93,7 +107,7 @@ const HomePage = () => {
             <Filter
               filters={filters}
               setFilters={setFilters}
-              resetFilters={() => setFilters(initialFilters)}
+              resetFilters={resetFilters}
             />
           </div>
         </>
@@ -103,7 +117,7 @@ const HomePage = () => {
             <Filter
               filters={filters}
               setFilters={setFilters}
-              resetFilters={() => setFilters(initialFilters)}
+              resetFilters={resetFilters}
             />
           </div>
 

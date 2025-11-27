@@ -1,4 +1,4 @@
-import React, { type SetStateAction, type Dispatch } from 'react';
+import React, { useCallback, memo, type SetStateAction, type Dispatch } from 'react';
 import type { IFilter } from '../../../types/Products';
 
 interface Props {
@@ -9,6 +9,14 @@ interface Props {
 }
 
 const BrandItem: React.FC<Props> = ({ title, setFilters, brand, price }) => {
+  const handleBrandClick = useCallback(() => {
+    setFilters((prev) => ({
+      ...prev,
+      brand: brand,
+      skip: 0,
+    }));
+  }, [setFilters, brand]);
+
   return (
     <div className="space-y-2 px-1 flex-1">
       <h3 className="font-semibold leading-5 line-clamp-2">{title}</h3>
@@ -17,13 +25,7 @@ const BrandItem: React.FC<Props> = ({ title, setFilters, brand, price }) => {
           <span className="font-semibold">Brand:</span>{' '}
           <button
             className="text-blue-700"
-            onClick={() =>
-              setFilters((prev) => ({
-                ...prev,
-                brand: brand,
-                skip: 0,
-              }))
-            }
+            onClick={handleBrandClick}
           >
             {brand}
           </button>
@@ -34,4 +36,4 @@ const BrandItem: React.FC<Props> = ({ title, setFilters, brand, price }) => {
   );
 };
 
-export default BrandItem;
+export default memo(BrandItem);

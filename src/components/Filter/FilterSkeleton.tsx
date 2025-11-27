@@ -1,4 +1,6 @@
-const FilterSkeleton = () => {
+import { memo } from 'react';
+
+const FilterSkeleton = memo(() => {
   return (
     <section className="w-full laptop:w-[230px] laptop:max-w-[230px] laptop:min-w-[230px] laptop:flex-shrink-0 laptop:flex-none filter-section p-4 pt-4 laptop:pt-10 bg-gray-200 rounded-3xl shadow-[0px_0px_8px_0px_rgba(0,0,0,0.35)] dark:bg-gray-800 dark:text-white animate-pulse">
       {/* Search */}
@@ -54,6 +56,6 @@ const FilterSkeleton = () => {
       </div>
     </section>
   );
-};
+});
 
 export default FilterSkeleton;

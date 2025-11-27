@@ -2,6 +2,8 @@ import {
   useEffect,
   useState,
   useRef,
+  useCallback,
+  memo,
   type Dispatch,
   type SetStateAction,
 } from 'react';
@@ -41,14 +43,14 @@ const Filter: React.FC<Props> = ({ filters, setFilters, resetFilters }) => {
   const debounceMinPrice = useDebounce(price.min);
   const debounceMaxPrice = useDebounce(price.max);
 
-  const handleClearFilter = () => {
+  const handleClearFilter = useCallback(() => {
     setLocalSearch('');
     resetFilters();
     setPrice({
       min: '',
       max: '',
     });
-  };
+  }, [resetFilters]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -88,7 +90,7 @@ const Filter: React.FC<Props> = ({ filters, setFilters, resetFilters }) => {
   if (isError) return <div>Error loading filter</div>;
 
   return (
-    <section className="w-full laptop:w-[230px] laptop:max-w-[230px] laptop:min-w-[230px] laptop:flex-shrink-0 laptop:flex-none filter-section p-4 pt-4 laptop:pt-10 bg-gray-200 rounded-3xl shadow-[0px_0px_8px_0px_rgba(0,0,0,0.35)] dark:bg-gray-800 dark:text-white">
+    <section className="w-full laptop:w-[230px] laptop:max-w-[230px] laptop:min-w-[230px] laptop:shrink-0 laptop:flex-none filter-section p-4 pt-4 laptop:pt-10 bg-gray-200 rounded-3xl shadow-[0px_0px_8px_0px_rgba(0,0,0,0.35)] dark:bg-gray-800 dark:text-white">
       <Search localSearch={localSearch} setLocalSearch={setLocalSearch} />
       <Price price={price} setPrice={setPrice} />
       <hr className="text-gray-400" />
@@ -105,4 +107,4 @@ const Filter: React.FC<Props> = ({ filters, setFilters, resetFilters }) => {
   );
 };
 
-export default Filter;
+export default memo(Filter);

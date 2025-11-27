@@ -8,7 +8,7 @@ const Product = () => {
   const { id } = useParams();
   const { data, isLoading, isError } = useGetProductQuery(String(id));
   const { isInCart, addToCart } = useCart();
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="text-center">Loading...</div>;
   if (isError || !data)
     return <div>Added a shopping cart and pages by roles</div>;
 
